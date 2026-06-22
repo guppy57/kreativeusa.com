@@ -84,7 +84,7 @@ export default function Navbar(props: NavbarProps) {
               <Logo className="h-8 w-auto -mt-1.5" />
             </Link>
           </div>
-          <div className="hidden md:flex items-center justify-end space-x-2">
+          <div className="hidden md:flex items-center justify-end space-x-4">
             <NavLink
               title="Home"
               href="/"

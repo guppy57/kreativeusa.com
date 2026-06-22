@@ -19,7 +19,9 @@ export default function PostPage({
   return (
     <div className="relative">
       <NextSeo
-        title={source.frontmatter.title as string + " | Guppy's Notes & Articles"}
+        title={
+          (source.frontmatter.title as string) + " | Guppy's Notes & Articles"
+        }
         description={source.frontmatter.description as string}
       />
       <Navbar activeLink="articles" />
@@ -65,17 +67,15 @@ export async function getStaticPaths() {
 export async function getStaticProps(
   ctx: GetStaticPropsContext<{
     slug: string;
-  }>
+  }>,
 ) {
   const { slug } = ctx.params!;
   const postFile = fs.readFileSync(`posts/${slug}.mdx`, "utf-8");
   const mdxSource = await serialize(postFile, { parseFrontmatter: true });
-  
+
   return {
     props: {
       source: mdxSource,
     },
-    // enable ISR
-    revalidate: 60,
   };
 }
